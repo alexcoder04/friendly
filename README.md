@@ -1,0 +1,2 @@
+# friendly
+Go utils library
