@@ -40,12 +40,16 @@ if friendly.IsDir(path) {
 
 ## Functions
 
+### `github.com/alexcoder04/friendly`
+
 ```go
 // files
 func WriteLines(file string, lines []string) error { }
 func ReadLines(file string) ([]string, error) { }
 func CopyFile(source string, destin string) error { }
 func CopyFolder(source string, destination string) error { }
+func GetConfigDir(program string) (string, error) { } // creates the directory if it doesn't exist
+func GetLogDir(program string) (string, error) { } // creates the directory if it doesn't exist
 
 // os
 func IsFile(path string) bool { }
@@ -59,6 +63,14 @@ func CompressFolder(folder string, destination string) error { }
 func ArrayContains(arr []interface{}, value interface{}) bool { }
 func SemVersionGreater(v1 string, v2 string) bool { }
 func DownloadFile(downloadUrl string, path string) error { }
+```
+
+### `github.com/alexcoder04/friendly/linux`
+
+```go
+// desktop
+func GetDisplayServer() string { }
+func GuiRunning() bool { }
 ```
 
 ## Contributing
