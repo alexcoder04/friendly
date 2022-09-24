@@ -1,11 +1,15 @@
+//go:build linux
+// +build linux
+
 package linux
 
 import (
 	"os"
 	"path"
+	"path/filepath"
+	"strconv"
 	"strings"
 
-	"github.com/adrg/xdg"
 	"github.com/alexcoder04/friendly"
 )
 
@@ -23,6 +27,13 @@ func GetDisplayServer() string {
 	return ""
 }
 
+func getRuntimeDir() string {
+	if os.Getenv("XDG_RUNTIME_DIR") != "" {
+		return os.Getenv("XDG_RUNTIME_DIR")
+	}
+	return filepath.Join("/run/user", strconv.Itoa(os.Getuid()))
+}
+
 func GuiRunning() bool {
 	dispServer := GetDisplayServer()
 	if dispServer == "" {
@@ -34,7 +45,7 @@ func GuiRunning() bool {
 		if display == "" {
 			return false
 		}
-		waySock := path.Join(xdg.RuntimeDir, display)
+		waySock := path.Join(getRuntimeDir(), display)
 		return friendly.IsFile(waySock)
 	}
 

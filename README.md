@@ -44,6 +44,7 @@ if friendly.IsDir(path) {
 
 ```go
 // files
+func ListFilesRecursively(folder string) ([]string, error) { }
 func WriteLines(file string, lines []string) error { }
 func ReadLines(file string) ([]string, error) { }
 func CopyFile(source string, destin string) error { }
