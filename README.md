@@ -33,7 +33,7 @@ import (
 
 ...
 if friendly.IsDir(path) {
-    friendly.UncompressFolder(path, destination)
+    friendly.CompressFolder(path, destination)
 }
 ...
 ```
@@ -44,7 +44,6 @@ if friendly.IsDir(path) {
 
 ```go
 // files
-func ListFilesRecursively(folder string) ([]string, error) { }
 func WriteLines(file string, lines []string) error { }
 func ReadLines(file string) ([]string, error) { }
 func CopyFile(source string, destin string) error { }
@@ -55,6 +54,7 @@ func GetLogDir(program string) (string, error) { } // creates the directory if i
 // os
 func IsFile(path string) bool { }
 func IsDir(path string) bool { }
+func ListFilesRecursively(folder string) ([]string, error) { }
 
 // zip
 func UncompressFolder(source string, destination string) error { }
