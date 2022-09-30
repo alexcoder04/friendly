@@ -8,7 +8,22 @@ import (
 	"path/filepath"
 )
 
+func Getpwd() string {
+	pwd, err := os.Getwd()
+	if err != nil {
+		pwd, err = os.UserHomeDir()
+		if err != nil {
+			return ""
+		}
+	}
+	return pwd
+}
+
 func Run(command string, arguments []string, workingDir string) error {
+	if workingDir == "" {
+		workingDir = Getpwd()
+	}
+
 	cmd := exec.Command(command, arguments...)
 	cmd.Dir = workingDir
 
