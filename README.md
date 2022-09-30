@@ -52,6 +52,7 @@ func GetConfigDir(program string) (string, error) { } // creates the directory i
 func GetLogDir(program string) (string, error) { } // creates the directory if it doesn't exist
 
 // os
+func Run(command string, arguments []string, workingDir string) error { }
 func IsFile(path string) bool { }
 func IsDir(path string) bool { }
 func ListFilesRecursively(folder string) ([]string, error) { }

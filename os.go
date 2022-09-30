@@ -1,9 +1,25 @@
 package friendly
 
 import (
+	"bytes"
+	"io"
 	"os"
+	"os/exec"
 	"path/filepath"
 )
+
+func Run(command string, arguments []string, workingDir string) error {
+	cmd := exec.Command(command, arguments...)
+	cmd.Dir = workingDir
+
+	var stdBuffer bytes.Buffer
+	mw := io.MultiWriter(os.Stdout, &stdBuffer)
+
+	cmd.Stdout = mw
+	cmd.Stderr = mw
+
+	return cmd.Run()
+}
 
 func IsFile(path string) bool {
 	stat, err := os.Stat(path)
