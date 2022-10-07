@@ -36,6 +36,16 @@ func Run(command string, arguments []string, workingDir string) error {
 	return cmd.Run()
 }
 
+func Exists(path string) bool {
+	_, err := os.Stat(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return false
+		}
+	}
+	return true
+}
+
 func IsFile(path string) bool {
 	stat, err := os.Stat(path)
 	if err != nil {

@@ -10,12 +10,32 @@ import (
 	"github.com/otiai10/copy"
 )
 
-func WriteLines(file string, lines []string) error {
-	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE, 0600)
-	defer f.Close()
+func WriteNewFile(file string, content string) error {
+	if Exists(file) {
+		return os.ErrExist
+	}
+
+	f, err := os.Create(file)
 	if err != nil {
 		return err
 	}
+
+	w := bufio.NewWriter(f)
+	_, err = w.WriteString("[]")
+	if err != nil {
+		return err
+	}
+
+	err = w.Flush()
+	return err
+}
+
+func WriteLines(file string, lines []string) error {
+	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE, 0600)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
 
 	w := bufio.NewWriter(f)
 	for _, l := range lines {

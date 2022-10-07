@@ -44,6 +44,7 @@ if friendly.IsDir(path) {
 
 ```go
 // files
+func WriteNewFile(file string, content string) error { }
 func WriteLines(file string, lines []string) error { }
 func ReadLines(file string) ([]string, error) { }
 func CopyFile(source string, destin string) error { }
@@ -54,6 +55,7 @@ func GetLogDir(program string) (string, error) { } // creates the directory if i
 // os
 func Getpwd() string { }
 func Run(command string, arguments []string, workingDir string) error { }
+func Exists(path string) bool { }
 func IsFile(path string) bool { }
 func IsDir(path string) bool { }
 func ListFilesRecursively(folder string) ([]string, error) { }
