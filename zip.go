@@ -10,8 +10,6 @@ import (
 )
 
 func UncompressFolder(source string, destination string) error {
-	var filenames []string
-
 	r, err := zip.OpenReader(source)
 	if err != nil {
 		return err
@@ -23,8 +21,6 @@ func UncompressFolder(source string, destination string) error {
 		if !strings.HasPrefix(fpath, filepath.Clean(destination)+string(os.PathSeparator)) {
 			return fmt.Errorf("%s: illegal file path", fpath)
 		}
-
-		filenames = append(filenames, fpath)
 
 		if f.FileInfo().IsDir() {
 			os.MkdirAll(fpath, os.ModePerm)

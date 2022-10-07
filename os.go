@@ -45,10 +45,7 @@ func Run(command string, arguments []string, workingDir string) error {
 func GetOutput(command string, arguments []string, workingDir string) (string, error) {
 	cmd := prepareCommand(command, arguments, workingDir)
 	out, err := cmd.Output()
-	if err != nil {
-		return "", err
-	}
-	return string(out), nil
+	return string(out), err
 }
 
 func Exists(path string) bool {
@@ -79,7 +76,7 @@ func IsDir(path string) bool {
 
 func ListFilesRecursively(folder string) ([]string, error) {
 	filesList := []string{}
-	err := filepath.Walk(folder, func(p string, f os.FileInfo, err error) error {
+	err := filepath.Walk(folder, func(p string, f os.FileInfo, _ error) error {
 		if p == folder {
 			return nil
 		}
