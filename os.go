@@ -19,13 +19,19 @@ func Getpwd() string {
 	return pwd
 }
 
-func Run(command string, arguments []string, workingDir string) error {
+func prepareCommand(command string, arguments []string, workingDir string) *exec.Cmd {
 	if workingDir == "" {
 		workingDir = Getpwd()
 	}
 
 	cmd := exec.Command(command, arguments...)
 	cmd.Dir = workingDir
+
+	return cmd
+}
+
+func Run(command string, arguments []string, workingDir string) error {
+	cmd := prepareCommand(command, arguments, workingDir)
 
 	var stdBuffer bytes.Buffer
 	mw := io.MultiWriter(os.Stdout, &stdBuffer)
@@ -34,6 +40,15 @@ func Run(command string, arguments []string, workingDir string) error {
 	cmd.Stderr = mw
 
 	return cmd.Run()
+}
+
+func GetOutput(command string, arguments []string, workingDir string) (string, error) {
+	cmd := prepareCommand(command, arguments, workingDir)
+	out, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+	return string(out), nil
 }
 
 func Exists(path string) bool {

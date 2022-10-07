@@ -55,6 +55,7 @@ func GetLogDir(program string) (string, error) { } // creates the directory if i
 // os
 func Getpwd() string { }
 func Run(command string, arguments []string, workingDir string) error { }
+func GetOutput(command string, arguments []string, workingDir string) (string, error) { }
 func Exists(path string) bool { }
 func IsFile(path string) bool { }
 func IsDir(path string) bool { }
