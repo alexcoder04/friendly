@@ -9,13 +9,18 @@ import (
 	"strings"
 )
 
-func ArrayContains(arr []interface{}, value interface{}) bool {
+func ArrayContains[T comparable](arr []T, value T) bool {
 	for _, v := range arr {
 		if v == value {
 			return true
 		}
 	}
 	return false
+}
+
+func IsInt(num string) bool {
+	_, err := strconv.Atoi(num)
+	return err == nil
 }
 
 func SemVersionGreater(v1 string, v2 string) bool {

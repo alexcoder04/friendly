@@ -66,7 +66,8 @@ func UncompressFolder(source string, destination string) error { }
 func CompressFolder(folder string, destination string) error { }
 
 // misc
-func ArrayContains(arr []interface{}, value interface{}) bool { }
+func ArrayContains[T comparable](arr []T, value T) bool { }
+func IsInt(num string) bool { }
 func SemVersionGreater(v1 string, v2 string) bool { }
 func DownloadFile(downloadUrl string, path string) error { }
 ```
