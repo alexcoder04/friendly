@@ -21,7 +21,7 @@ func WriteNewFile(file string, content string) error {
 	}
 
 	w := bufio.NewWriter(f)
-	_, err = w.WriteString("[]")
+	_, err = w.WriteString(content)
 	if err != nil {
 		return err
 	}
