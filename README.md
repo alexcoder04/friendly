@@ -52,6 +52,9 @@ func CopyFolder(source string, destination string) error { }
 func GetConfigDir(program string) (string, error) { } // creates the directory if it doesn't exist
 func GetLogDir(program string) (string, error) { } // creates the directory if it doesn't exist
 
+// io
+func Input(prompt string) (string, error) { }
+
 // os
 func Getpwd() string { }
 func Run(command string, arguments []string, workingDir string) error { }
