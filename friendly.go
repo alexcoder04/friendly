@@ -1,10 +1,6 @@
 package friendly
 
 import (
-	"io"
-	"net/http"
-	"net/url"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -45,27 +41,4 @@ func SemVersionGreater(v1 string, v2 string) bool {
 		return false
 	}
 	return false
-}
-
-func DownloadFile(downloadUrl string, path string) error {
-	_, err := url.Parse(downloadUrl)
-	if err != nil {
-		return err
-	}
-
-	res, err := http.Get(downloadUrl)
-	if err != nil {
-		return err
-	}
-	defer res.Body.Close()
-
-	out, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer out.Close()
-
-	_, err = io.Copy(out, res.Body)
-
-	return err
 }

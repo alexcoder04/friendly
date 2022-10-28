@@ -1,16 +1,14 @@
 //go:build linux
 // +build linux
 
-package linux
+package flinux
 
 import (
 	"os"
 	"path"
-	"path/filepath"
-	"strconv"
 	"strings"
 
-	"github.com/alexcoder04/friendly"
+	"github.com/alexcoder04/friendly/ffiles"
 )
 
 func GetDisplayServer() string {
@@ -27,13 +25,6 @@ func GetDisplayServer() string {
 	return ""
 }
 
-func getRuntimeDir() string {
-	if os.Getenv("XDG_RUNTIME_DIR") != "" {
-		return os.Getenv("XDG_RUNTIME_DIR")
-	}
-	return filepath.Join("/run/user", strconv.Itoa(os.Getuid()))
-}
-
 func GuiRunning() bool {
 	dispServer := GetDisplayServer()
 	if dispServer == "" {
@@ -45,8 +36,12 @@ func GuiRunning() bool {
 		if display == "" {
 			return false
 		}
-		waySock := path.Join(getRuntimeDir(), display)
-		return friendly.IsFile(waySock)
+		runTimeDir, err := ffiles.GetRuntimeDir()
+		if err != nil {
+			return false
+		}
+		waySock := path.Join(runTimeDir, display)
+		return ffiles.IsFile(waySock)
 	}
 
 	display := strings.Replace(os.Getenv("DISPLAY"), ":", "", 1)
@@ -54,5 +49,5 @@ func GuiRunning() bool {
 		return false
 	}
 	x11Sock := path.Join(os.TempDir(), ".X11-unix", "X"+display)
-	return friendly.IsFile(x11Sock)
+	return ffiles.IsFile(x11Sock)
 }
