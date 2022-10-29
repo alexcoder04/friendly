@@ -8,7 +8,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/alexcoder04/friendly/ffiles"
+	"github.com/alexcoder04/friendly/v2/ffiles"
 )
 
 func GetDisplayServer() string {

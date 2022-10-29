@@ -1,4 +1,4 @@
-module github.com/alexcoder04/friendly
+module github.com/alexcoder04/friendly/v2
 
 go 1.18
 
