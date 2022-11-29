@@ -5,8 +5,6 @@ package ffiles
 
 import (
 	"os"
-	"path/filepath"
-	"strconv"
 )
 
 func GetRuntimeDir() (string, error) {
