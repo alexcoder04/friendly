@@ -1,10 +1,13 @@
 package friendly
 
 import (
+	"fmt"
+	"os"
 	"strconv"
-	"strings"
 )
 
+// Checks if an element is present in an array.
+// Can be used with different types thanks to generics.
 func ArrayContains[T comparable](arr []T, value T) bool {
 	for _, v := range arr {
 		if v == value {
@@ -14,31 +17,19 @@ func ArrayContains[T comparable](arr []T, value T) bool {
 	return false
 }
 
+// Checks whether a string represents a valid integer.
 func IsInt(num string) bool {
 	_, err := strconv.Atoi(num)
 	return err == nil
 }
 
-func SemVersionGreater(v1 string, v2 string) bool {
-	v1a := strings.Split(v1, ".")
-	v2a := strings.Split(v2, ".")
+// Prints the provided error message and exits immediately.
+func Die(message string, args ...any) {
+	fmt.Printf("Fatal error: %s\n", fmt.Sprintf(message, args...))
+	os.Exit(1)
+}
 
-	for i := 0; i < len(v1a); i++ {
-		num1, err := strconv.Atoi(v1a[i])
-		if err != nil {
-			num1 = 0
-		}
-		num2, err := strconv.Atoi(v2a[i])
-		if err != nil {
-			num2 = 0
-		}
-		if num1 == num2 {
-			continue
-		}
-		if num1 > num2 {
-			return true
-		}
-		return false
-	}
-	return false
+// Prints a warning message.
+func Warn(message string, args ...any) {
+	fmt.Printf("Warning: %s\n", fmt.Sprintf(message, args...))
 }

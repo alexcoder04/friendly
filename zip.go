@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// Unzips a file into `destination`.
 func UncompressFolder(source string, destination string) error {
 	r, err := zip.OpenReader(source)
 	if err != nil {
@@ -53,6 +54,7 @@ func UncompressFolder(source string, destination string) error {
 	return nil
 }
 
+// Zips a folder into a file at `destination`.
 func CompressFolder(folder string, destination string) error {
 	file, err := os.Create(destination)
 	if err != nil {

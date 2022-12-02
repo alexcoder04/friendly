@@ -17,8 +17,8 @@ Also useful if you are starting to learn Go and are annoyed by implementing basi
 In your project directory, type
 
 ```sh
-go get github.com/alexcoder04/friendly
-# or `go get github.com/alexcoder04/friendly/...` depending on the sub-package you need
+go get github.com/alexcoder04/friendly/v2
+# or `go get github.com/alexcoder04/friendly/v2/...` depending on the sub-package you need
 ```
 
 And then, in your code
@@ -28,8 +28,8 @@ package ...
 
 import (
     ...
-    "github.com/alexcoder04/friendly"
-    "github.com/alexcoder04/friendly/ffiles"
+    "github.com/alexcoder04/friendly/v2"
+    "github.com/alexcoder04/friendly/v2/ffiles"
 )
 
 ...
@@ -42,37 +42,51 @@ if ffiles.IsDir(folder) {
 
 ## Functions in Sub-Ppackages
 
-### `github.com/alexcoder04/friendly`
+See also the documentation at `go.dev`:
+
+ - [alexcoder04/friendly/v2](https://pkg.go.dev/github.com/alexcoder04/friendly/v2)
+ - [alexcoder04/friendly/v2/ffiles](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/ffiles)
+ - [alexcoder04/friendly/v2/flinux](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/flinux)
+
+### `github.com/alexcoder04/friendly/v2`
 
 ```go
 // io
 func Input(prompt string) (string, error) { }
 
 // net
-func DownloadFile(downloadUrl string, path string) error { }
+func DownloadFile(dlUrl string, path string) error { }
+func GetFromUrlBytes(dlUrl string) ([]byte, error) { }
+func GetFromUrlString(dlUrl string) (string, error) { }
 
 // os
+func GetOutput(commandLine []string, workingDir string) (string, error) { } // pass "" for workingDir to use current working dir
 func Getpwd() string { }
 func Run(commandline []string, workingDir string) error { } // pass "" for workingDir to use current working dir
-func GetOutput(commandLine []string, workingDir string) (string, error) { } // pass "" for workingDir to use current working dir
 
 // zip
-func UncompressFolder(source string, destination string) error { }
 func CompressFolder(folder string, destination string) error { }
+func UncompressFolder(source string, destination string) error { }
+
+// strings
+func CapitalizeWord(word string) string { }
+func GetFullNameFromMailAddress(address string) string { } // capitalize every part of mail address before @
+func SemVersionGreater(v1 string, v2 string) bool { }
 
 // misc
 func ArrayContains[T comparable](arr []T, value T) bool { }
+func Die(message string, args ...any) { } // print error and exit
 func IsInt(num string) bool { }
-func SemVersionGreater(v1 string, v2 string) bool { }
+func Warn(message string, args ...any) { } // print warning message
 ```
 
-### `github.com/alexcoder04/friendly/ffiles`
+### `github.com/alexcoder04/friendly/v2/ffiles`
 
 ```go
 // exist
 func Exists(path string) (bool, error) { } // returns true error when cannot stat file (and error is not os.ErrNotExists)
-func IsFile(path string) bool { } // true only when file exists and is NOT a directory
 func IsDir(path string) bool { } // true only when file exists and IS a directory
+func IsFile(path string) bool { } // true only when file exists and is NOT a directory
 
 // read-write
 func ListFilesRecursively(folder string) ([]string, error) { }
@@ -90,7 +104,7 @@ func GetLogDirFor(program string) (string, error) { } // creates the directory i
 func GetRuntimeDir() string { } // creates the directory if it doesn't exist
 ```
 
-### `github.com/alexcoder04/friendly/flinux`
+### `github.com/alexcoder04/friendly/v2/flinux`
 
 ```go
 // desktop
