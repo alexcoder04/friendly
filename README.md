@@ -77,6 +77,7 @@ func SemVersionGreater(v1 string, v2 string) bool { }
 func ArrayContains[T comparable](arr []T, value T) bool { }
 func Die(message string, args ...any) { } // print error and exit
 func IsInt(num string) bool { }
+func RunOnSignal(s syscall.Signal, callback func()) { }
 func Warn(message string, args ...any) { } // print warning message
 ```
 

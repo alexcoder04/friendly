@@ -5,6 +5,8 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"os/signal"
+	"syscall"
 )
 
 // Get current working directory without returning an error.
@@ -50,4 +52,14 @@ func GetOutput(commandLine []string, workingDir string) (string, error) {
 	cmd := prepareCommand(commandLine, workingDir)
 	out, err := cmd.Output()
 	return string(out), err
+}
+
+// Runs a function in new goroutine if gets an os signal.
+func RunOnSignal(s syscall.Signal, callback func()) {
+	for {
+		channel := make(chan os.Signal, 1)
+		signal.Notify(channel, s)
+		<-channel
+		go callback()
+	}
 }
