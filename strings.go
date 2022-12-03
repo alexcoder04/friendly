@@ -16,14 +16,14 @@ func CapitalizeWord(word string) string {
 // Example: "john.doe@example.com" -> "John Doe".
 func GetFullNameFromMailAddress(address string) string {
 	parts := strings.Split(strings.Split(address, "@")[0], ".")
-	res := ""
+	res := []string{}
 	for _, p := range parts {
 		if len(p) < 2 {
 			continue
 		}
-		res += " " + CapitalizeWord(p)
+		res = append(res, CapitalizeWord(p))
 	}
-	return res
+	return strings.Join(res, " ")
 }
 
 // Checks if first semantic version is greater than another.
