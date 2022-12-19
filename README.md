@@ -101,6 +101,7 @@ func CopyFolder(source string, destination string) error { }
 
 // locations
 func GetConfigDirFor(program string) (string, error) { } // creates the directory if it doesn't exist
+func GetCacheDirFor(program string) (string, error) { } // creates the directory if it doesn't exist
 func GetLogDirFor(program string) (string, error) { } // creates the directory if it doesn't exist
 func GetRuntimeDir() string { } // creates the directory if it doesn't exist
 ```

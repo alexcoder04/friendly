@@ -7,12 +7,12 @@ import (
 )
 
 func GetConfigDirFor(program string) (string, error) {
-	userConfigDir, err := os.UserConfigDir()
+	dir, err := os.UserConfigDir()
 	if err != nil {
 		return "", err
 	}
 
-	configDir := path.Join(userConfigDir, program)
+	configDir := path.Join(dir, program)
 	err = os.MkdirAll(configDir, 0700)
 	if err != nil {
 		return "", err
@@ -28,4 +28,19 @@ func GetLogDirFor(program string) (string, error) {
 		return "", err
 	}
 	return logDir, nil
+}
+
+func GetCacheDirFor(program string) (string, error) {
+	dir, err := os.UserCacheDir()
+	if err != nil {
+		return "", err
+	}
+
+	cacheDir := path.Join(dir, program)
+	err = os.MkdirAll(cacheDir, 0700)
+	if err != nil {
+		return "", err
+	}
+
+	return cacheDir, nil
 }
