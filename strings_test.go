@@ -30,6 +30,21 @@ func TestGetFullNameFromMailAddress(t *testing.T) {
 	stringStringTest(t, GetFullNameFromMailAddress, "GetFullNameFromMailAddress", input, want)
 }
 
+func TestSafeCharsOnly(t *testing.T) {
+	strs := []string{"Hello", "Good afternoon", ".e", "#`", "123"}
+	allowed := []byte("abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ1234567890")
+	want := []bool{true, false, false, false, true}
+
+	for i := range strs {
+		t.Run(fmt.Sprintf("SafeCharsOnly=%d", i), func(t *testing.T) {
+			got := SafeCharsOnly(strs[i], allowed)
+			if got != want[i] {
+				t.Fatalf("want %v, got %v", want[i], got)
+			}
+		})
+	}
+}
+
 func TestSemVersionGreater(t *testing.T) {
 	input := [][]string{
 		{"1.2.3", "1.2.3"},

@@ -14,6 +14,8 @@ Also useful if you are starting to learn Go and are annoyed by implementing basi
 
 ## Install and Use
 
+**Warning:** the `v1` version is deprecated, please use `friendly/v2` instead.
+
 In your project directory, type
 
 ```sh
@@ -40,7 +42,7 @@ if ffiles.IsDir(folder) {
 ...
 ```
 
-## Functions in Sub-Ppackages
+## Documentation
 
 See also the documentation at `pkg.go.dev`:
 

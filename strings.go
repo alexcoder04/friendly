@@ -11,6 +11,16 @@ func CapitalizeWord(word string) string {
 	return string(append([]rune{unicode.ToUpper([]rune(word)[0])}, []rune(word)[1:]...))
 }
 
+// Checks if a string contains only provided chars.
+func SafeCharsOnly(str string, safe []byte) bool {
+	for i := range str {
+		if !ArrayContains(safe, str[i]) {
+			return false
+		}
+	}
+	return true
+}
+
 // Capitalizes every part of between periods of the email address before the @-sign.
 // Joins them with " ".
 // Example: "john.doe@example.com" -> "John Doe".
