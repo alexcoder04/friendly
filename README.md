@@ -42,44 +42,15 @@ if ffiles.IsDir(folder) {
 
 ## Functions in Sub-Ppackages
 
-See also the documentation at `go.dev`:
+See also the documentation at `pkg.go.dev`:
 
- - [alexcoder04/friendly/v2](https://pkg.go.dev/github.com/alexcoder04/friendly/v2)
- - [alexcoder04/friendly/v2/ffiles](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/ffiles)
- - [alexcoder04/friendly/v2/flinux](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/flinux)
+ - [`alexcoder04/friendly/v2`](https://pkg.go.dev/github.com/alexcoder04/friendly/v2)
+ - [`alexcoder04/friendly/v2/ffiles`](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/ffiles)
+ - [`alexcoder04/friendly/v2/flinux`](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/flinux)
 
 ### `github.com/alexcoder04/friendly/v2`
 
-```go
-// io
-func Input(prompt string) (string, error) { }
-
-// net
-func DownloadFile(dlUrl string, path string) error { }
-func GetFromUrlBytes(dlUrl string) ([]byte, error) { }
-func GetFromUrlString(dlUrl string) (string, error) { }
-
-// os
-func GetOutput(commandLine []string, workingDir string) (string, error) { } // pass "" for workingDir to use current working dir
-func Getpwd() string { }
-func Run(commandline []string, workingDir string) error { } // pass "" for workingDir to use current working dir
-
-// zip
-func CompressFolder(folder string, destination string) error { }
-func UncompressFolder(source string, destination string) error { }
-
-// strings
-func CapitalizeWord(word string) string { }
-func GetFullNameFromMailAddress(address string) string { } // capitalize every part of mail address before @
-func SemVersionGreater(v1 string, v2 string) bool { }
-
-// misc
-func ArrayContains[T comparable](arr []T, value T) bool { }
-func Die(message string, args ...any) { } // print error and exit
-func IsInt(num string) bool { }
-func RunOnSignal(s syscall.Signal, callback func()) { }
-func Warn(message string, args ...any) { } // print warning message
-```
+Please refer to [pkg.go.dev](https://pkg.go.dev/github.com/alexcoder04/friendly/v2) for this section.
 
 ### `github.com/alexcoder04/friendly/v2/ffiles`
 

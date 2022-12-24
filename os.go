@@ -23,6 +23,15 @@ func Getpwd() string {
 	return pwd
 }
 
+// Get environmental variable.
+// If it is not defined (=""), return the provided default value.
+func Getenv(key string, def string) string {
+	if val := os.Getenv(key); val != "" {
+		return val
+	}
+	return def
+}
+
 func prepareCommand(commandLine []string, workingDir string) *exec.Cmd {
 	if workingDir == "" {
 		workingDir = Getpwd()
