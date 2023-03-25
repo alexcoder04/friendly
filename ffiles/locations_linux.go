@@ -9,6 +9,8 @@ import (
 	"strconv"
 )
 
+// Gets the runtime directory and creates it if it does not exist yet.
+// `$XDG_RUNTIME_DIR` is used on Linux, `os.TempDir()` on Windows.
 func GetRuntimeDir() (string, error) {
 	var dir string
 	if os.Getenv("XDG_RUNTIME_DIR") != "" {

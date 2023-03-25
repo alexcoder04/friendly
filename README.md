@@ -56,30 +56,11 @@ Please refer to [pkg.go.dev](https://pkg.go.dev/github.com/alexcoder04/friendly/
 
 ### `github.com/alexcoder04/friendly/v2/ffiles`
 
-```go
-// exist
-func Exists(path string) (bool, error) { } // returns true error when cannot stat file (and error is not os.ErrNotExists)
-func IsDir(path string) bool { } // true only when file exists and IS a directory
-func IsFile(path string) bool { } // true only when file exists and is NOT a directory
-
-// read-write
-func ListFilesRecursively(folder string) ([]string, error) { }
-func ReadLines(file string) ([]string, error) { }
-func WriteLines(file string, lines []string) error { }
-func WriteNewFile(file string, content string) error { }
-
-// copy
-func CopyFile(source string, destin string) error { }
-func CopyFolder(source string, destination string) error { }
-
-// locations
-func GetConfigDirFor(program string) (string, error) { } // creates the directory if it doesn't exist
-func GetCacheDirFor(program string) (string, error) { } // creates the directory if it doesn't exist
-func GetLogDirFor(program string) (string, error) { } // creates the directory if it doesn't exist
-func GetRuntimeDir() string { } // creates the directory if it doesn't exist
-```
+Please refer to [pkg.go.dev](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/ffiles) for this section.
 
 ### `github.com/alexcoder04/friendly/v2/flinux`
+
+You can find this section also on [pkg.go.dev](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/flinux).
 
 ```go
 // desktop
@@ -91,3 +72,4 @@ func GuiRunning() bool { }
 
 If you use this library and are missing some feature - don't hesitate to open a
 pull request or an issue, I'm always looking forward to improve this project!
+

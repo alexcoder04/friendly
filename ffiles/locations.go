@@ -6,6 +6,8 @@ import (
 	"path"
 )
 
+// Returns a sensible config directory for `program`.
+// Uses `os.UserConfigDir()` under the hood and creates the directory if it does not exist yet.
 func GetConfigDirFor(program string) (string, error) {
 	dir, err := os.UserConfigDir()
 	if err != nil {
@@ -21,6 +23,9 @@ func GetConfigDirFor(program string) (string, error) {
 	return configDir, nil
 }
 
+// Returns a sensible config directory for `program`.
+// `os.TempDir()` is used, so the logs may not be persistent depensing on the operating system.
+// Creates the directory if it does not exist yet.
 func GetLogDirFor(program string) (string, error) {
 	logDir := path.Join(os.TempDir(), fmt.Sprintf("%s-%d", program, os.Getuid()))
 	err := os.MkdirAll(logDir, 0700)
@@ -30,6 +35,8 @@ func GetLogDirFor(program string) (string, error) {
 	return logDir, nil
 }
 
+// Returns a sensible cache directory for `program`.
+// Uses `os.UserCacheDir()` under the hood and creates the directory if it does not exist yet.
 func GetCacheDirFor(program string) (string, error) {
 	dir, err := os.UserCacheDir()
 	if err != nil {
