@@ -44,29 +44,11 @@ if ffiles.IsDir(folder) {
 
 ## Documentation
 
-See also the documentation at `pkg.go.dev`:
+The documentation can be found on `pkg.go.dev`:
 
  - [`alexcoder04/friendly/v2`](https://pkg.go.dev/github.com/alexcoder04/friendly/v2)
  - [`alexcoder04/friendly/v2/ffiles`](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/ffiles)
  - [`alexcoder04/friendly/v2/flinux`](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/flinux)
-
-### `github.com/alexcoder04/friendly/v2`
-
-Please refer to [pkg.go.dev](https://pkg.go.dev/github.com/alexcoder04/friendly/v2) for this section.
-
-### `github.com/alexcoder04/friendly/v2/ffiles`
-
-Please refer to [pkg.go.dev](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/ffiles) for this section.
-
-### `github.com/alexcoder04/friendly/v2/flinux`
-
-You can find this section also on [pkg.go.dev](https://pkg.go.dev/github.com/alexcoder04/friendly/v2/flinux).
-
-```go
-// desktop
-func GetDisplayServer() string { }
-func GuiRunning() bool { }
-```
 
 ## Contributing
 
